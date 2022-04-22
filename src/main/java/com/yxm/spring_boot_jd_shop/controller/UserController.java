@@ -20,7 +20,7 @@ import java.util.List;
  * Description:
  */
 @RestController
-public class DemoController01 {
+public class UserController {
 
     @Autowired
     private UserRepository userRepository;

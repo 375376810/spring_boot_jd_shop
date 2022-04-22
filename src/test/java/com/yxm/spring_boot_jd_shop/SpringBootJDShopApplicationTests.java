@@ -34,7 +34,8 @@ public class SpringBootJDShopApplicationTests {
 
     @Test
     public void testRedis() throws JsonProcessingException {
-        //1.从redis中获得数据,数据的形式json字符串
+        /*
+       //1.从redis中获得数据,数据的形式json字符串
         String userListJson = redisTemplate.boundValueOps("user.findAll").get();
         //2.判断redis中是否存在数据
         if (null == userListJson) {
@@ -50,6 +51,7 @@ public class SpringBootJDShopApplicationTests {
         }
         //4.将数据在控制台打印
         System.out.println(userListJson);
+        */
     }
 
 }
