@@ -39,7 +39,7 @@ public class UserController {
     /**
      * 保存用户
      */
-    @RequestMapping(value = "/save_user",method = RequestMethod.POST)
+    @RequestMapping(value = "/save_user", method = RequestMethod.POST)
     public void saveUser(@RequestBody User user) {
         System.out.println(user);
         System.out.println("保存成功");
@@ -48,12 +48,13 @@ public class UserController {
 
     /**
      * 从数据库或redis中查找所有user
+     *
      * @return
      */
-    @RequestMapping(value = "/get_all_user",method = RequestMethod.GET)
+    @RequestMapping(value = "/get_all_user", method = RequestMethod.GET)
     public String getAllUser() throws JsonProcessingException {
         List<User> all = userRepository.findAll();
-        return  new ObjectMapper().writeValueAsString(all);
+        return new ObjectMapper().writeValueAsString(all);
     }
 
 }

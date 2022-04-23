@@ -14,6 +14,7 @@ import java.util.List;
  */
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    public List<User> findAll();
+    @Override
+    List<User> findAll();
 
 }
