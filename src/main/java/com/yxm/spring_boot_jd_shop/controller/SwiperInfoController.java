@@ -1,12 +1,15 @@
 package com.yxm.spring_boot_jd_shop.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yxm.spring_boot_jd_shop.domain.SwiperInfo;
 import com.yxm.spring_boot_jd_shop.repository.SwiperItemsRepository;
+import com.yxm.spring_boot_jd_shop.utils.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.LinkedHashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,23 +25,14 @@ public class SwiperInfoController {
 
     /**
      * 轮播图接口
-     *
      * @return
      */
-    @RequestMapping(value = "/swiper_info", method = RequestMethod.GET)
-    public String swiperInfo() {
-        SwiperInfo info = new SwiperInfo();
-        info.setNowtime(System.currentTimeMillis());
-        //把所有的items查出来
-        info.setSwiperItems(itemsRepository.findAll());
-        info.setCode(200);
-        //将信息转成json
-        try {
-            return new ObjectMapper().writeValueAsString(info);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "{SwiperInfoController--swiperInfo转成json时出错}";
-        }
+    @RequestMapping(value = "/swiper_info",produces = "application/json;charset=utf-8", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<LinkedHashMap<String, Object>> swiperInfo() {
+        LinkedHashMap<String, Object> data = JsonUtil.success();
+        data.put("swiperItems",itemsRepository.findAll());
+        return ResponseEntity.ok(data);
     }
 
 }

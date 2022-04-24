@@ -1,7 +1,6 @@
 package com.yxm.spring_boot_jd_shop;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yxm.spring_boot_jd_shop.domain.User;
 import com.yxm.spring_boot_jd_shop.repository.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -14,8 +13,8 @@ import java.util.List;
 @SpringBootTest(classes = SpringBootJDShopApplication.class)
 public class SpringBootJDShopApplicationTests {
 
-    @Autowired
-    private RedisTemplate<String, String> redisTemplate;
+   // @Autowired
+   // private RedisTemplate<String, String> redisTemplate;
 
     @Autowired
     private UserRepository userRepository;
@@ -24,12 +23,6 @@ public class SpringBootJDShopApplicationTests {
     void test01() {
         List<User> all = userRepository.findAll();
         System.out.println(all);
-    }
-
-    @Test
-    public void test02() {
-        User user = new User("小红", "123345", "小晓红");
-        userRepository.save(user);
     }
 
     @Test
