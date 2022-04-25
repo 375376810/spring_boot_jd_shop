@@ -1,20 +1,15 @@
 package com.yxm.spring_boot_jd_shop.domain;
 
+import javax.persistence.*;
 /**
  * Created with Android Studio.
  * Author: YXM
  * Date: 2022/4/22
  * Time: 22:09
- * Description:
- */
-
-import javax.persistence.*;
-
-/**
- * 轮播图每张图片的信息
+ * Description:首页轮播图元素
  */
 @Entity
-@Table(name = "swiperitems")
+@Table(name = "swiper_items")
 public class SwiperItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
