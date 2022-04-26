@@ -1,7 +1,7 @@
 server:
-   servlet:
-     context-path: /spring_boot_jd_shop
-   port: 8080
+  servlet:
+    context-path: /spring_boot_jd_shop
+  port: 8080
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

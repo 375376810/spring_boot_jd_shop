@@ -20,11 +20,11 @@ public class CategoryItemsInfoController {
     @Autowired
     private CategoryItemsRepository categoryItemsRepository;
 
-    @RequestMapping(value = "/category_items_info",produces = "application/json;charset=utf-8", method = RequestMethod.GET)
+    @RequestMapping(value = "/category_items_info", produces = "application/json;charset=utf-8", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<LinkedHashMap<String, Object>> categoryItemsInfo(@RequestParam("category_list_id") long categoryListId) {
         LinkedHashMap<String, Object> data = JsonUtil.success();
-        data.put("categoryItems",categoryItemsRepository.findAllByCategoryListId(categoryListId));
+        data.put("categoryItems", categoryItemsRepository.findAllByCategoryListId(categoryListId));
         return ResponseEntity.ok(data);
     }
 
