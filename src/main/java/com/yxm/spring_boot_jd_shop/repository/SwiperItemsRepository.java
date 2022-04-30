@@ -18,9 +18,6 @@ public interface SwiperItemsRepository extends JpaRepository<SwiperItems, Long> 
     List<SwiperItems> findAll();
 
     @Override
-    SwiperItems getOne(Long id);
-
-    @Override
     <S extends SwiperItems> S saveAndFlush(S swiperItem);
 
 }

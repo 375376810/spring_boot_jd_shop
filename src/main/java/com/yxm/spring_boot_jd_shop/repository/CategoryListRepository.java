@@ -17,7 +17,5 @@ public interface CategoryListRepository extends JpaRepository<CategoryList,Long>
     @Override
     List<CategoryList> findAll();
 
-    @Override
-    CategoryList getOne(Long id);
 
 }
