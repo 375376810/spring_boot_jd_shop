@@ -1,4 +1,4 @@
-package com.yxm.spring_boot_jd_shop.Pubs;
+package com.yxm.spring_boot_jd_shop.pubs;
 
 /**
  * Created with IntelliJ IDEA.

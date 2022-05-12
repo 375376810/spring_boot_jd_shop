@@ -5,36 +5,42 @@ import javax.persistence.*;
 /**
  * Created with IntelliJ IDEA.
  * Author: YXM
- * Date: 2022/4/25
- * Time: 17:50
- * Description: 分类页右侧元素
+ * Date: 2022/5/12
+ * Time: 18:38
+ * Description: 热门商品改为通过接口访问返回
  */
 @Entity
-@Table(name = "category_items")
-public class CategoryItems {
+@Table(name = "hot_product_items")
+public class HotProductItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "category_list_id")
-    private Long categoryListId;
+
+    @Column(name = "list_id")
+    private Long listId;
+
     @Column(name = "title")
     private String title;
+
     @Column(name = "price")
     private double price;
+
     @Column(name = "desc")
     private String desc;
+
     @Column(name = "url")
     private String url;
+
     @Column(name = "sort")
     private String sort;
 
-    public CategoryItems() {
+    public HotProductItems() {
     }
 
-    public CategoryItems(Long id, Long categoryListId, String title, double price, String desc, String url, String sort) {
+    public HotProductItems(Long id, Long listId, String title, double price, String desc, String url, String sort) {
         this.id = id;
-        this.categoryListId = categoryListId;
+        this.listId = listId;
         this.title = title;
         this.price = price;
         this.desc = desc;
@@ -44,7 +50,7 @@ public class CategoryItems {
 
     @Override
     public String toString() {
-        return "CategoryItems{" + "id=" + id + ", categoryListId=" + categoryListId + ", title='" + title + '\'' + ", price=" + price + ", desc='" + desc + '\'' + ", url='" + url + '\'' + ", sort='" + sort + '\'' + '}';
+        return "HotProductItems{" + "id=" + id + ", listId=" + listId + ", title='" + title + '\'' + ", price=" + price + ", desc='" + desc + '\'' + ", url='" + url + '\'' + ", sort='" + sort + '\'' + '}';
     }
 
     public Long getId() {
@@ -55,12 +61,12 @@ public class CategoryItems {
         this.id = id;
     }
 
-    public Long getCategoryListId() {
-        return categoryListId;
+    public Long getListId() {
+        return listId;
     }
 
-    public void setCategoryListId(Long categoryListId) {
-        this.categoryListId = categoryListId;
+    public void setListId(Long listId) {
+        this.listId = listId;
     }
 
     public String getTitle() {

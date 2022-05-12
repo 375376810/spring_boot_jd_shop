@@ -1,6 +1,6 @@
 package com.yxm.spring_boot_jd_shop.utils;
 
-import com.yxm.spring_boot_jd_shop.Pubs.ResponseCode;
+import com.yxm.spring_boot_jd_shop.pubs.ResponseCode;
 
 import java.util.LinkedHashMap;
 
