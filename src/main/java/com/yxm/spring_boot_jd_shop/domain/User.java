@@ -17,20 +17,36 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "username")
-    private String username;
+    @Column(name = "user_name")
+    private String userName;
     @Column(name = "password")
     private String password;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "nick_name")
+    private String nickName;
+    @Column(name = "address")
+    private String address;
+    @Column(name = "salt")
+    private String salt;
+    @Column(name = "gender")
+    private int gender;
+    @Column(name = "age")
+    private int age;
+    @Column(name = "email")
+    private String email;
 
     public User() {
     }
 
-    public User(String username, String password, String name) {
-        this.username = username;
+    public User(Long id, String userName, String password, String nickName, String address, String salt, int gender, int age, String email) {
+        this.id = id;
+        this.userName = userName;
         this.password = password;
-        this.name = name;
+        this.nickName = nickName;
+        this.address = address;
+        this.salt = salt;
+        this.gender = gender;
+        this.age = age;
+        this.email = email;
     }
 
     public Long getId() {
@@ -41,12 +57,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -57,16 +73,56 @@ public class User {
         this.password = password;
     }
 
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", username='" + username + '\'' + ", password='" + password + '\'' + ", name='" + name + '\'' + '}';
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        return "User{" + "id=" + id + ", userName='" + userName + '\'' + ", password='" + password + '\'' + ", nickName='" + nickName + '\'' + ", address='" + address + '\'' + ", salt='" + salt + '\'' + ", gender=" + gender + ", age=" + age + ", email='" + email + '\'' + '}';
     }
 }
