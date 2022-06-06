@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yxm.spring_boot_jd_shop.domain.User;
 import com.yxm.spring_boot_jd_shop.repository.UserRepository;
 import com.yxm.spring_boot_jd_shop.utils.JsonUtil;
+import com.yxm.spring_boot_jd_shop.utils.SignatureUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.DigestUtils;
@@ -87,6 +88,49 @@ public class UserController {
             data.put("is_user_exists", true);
         } else {
             data.put("is_user_exists", false);
+        }
+        return ResponseEntity.ok(data);
+    }
+
+    /**
+     * 修改收货地址
+     *
+     * @param requestData 签名后的userJson
+     * @return
+     */
+    @RequestMapping(value = "/edit_address", produces = "application/json;charset=utf-8", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<LinkedHashMap<String, Object>> editAddress(@RequestBody LinkedHashMap<String, Object> requestData) {
+        String requestSign = (String) requestData.get("sign");
+        //需要验证签名的只有这几个字段
+        int id = (int) requestData.get("id");
+        String userName = (String) requestData.get("userName");
+        String address = (String) requestData.get("address");
+        String address2 = (String) requestData.get("address2");
+        //从数据库中取出salt
+        User user = userRepository.findById(id);
+        String salt = user.getSalt();
+        //组装服务端json
+        LinkedHashMap<String, Object> tempJson = new LinkedHashMap<String, Object>();
+        tempJson.put("id", id);
+        tempJson.put("userName", userName);
+        tempJson.put("address", address);
+        tempJson.put("address2", address2);
+        tempJson.put("salt", salt);
+        //签名
+        String responseSign = SignatureUtil.getSignature(tempJson);
+        //对比请求端和服务器端的签名是否一致
+        ObjectMapper mapper = new ObjectMapper();
+        LinkedHashMap<String, Object> data;
+        if (requestSign.equals(responseSign)) {
+            //更新user表
+            user.setAddress(address);
+            user.setAddress2(address2);
+            userRepository.save(user);
+            //返回code200
+            data = JsonUtil.success();
+        } else {
+            data = JsonUtil.error("签名不一致,拒绝访问!");
         }
         return ResponseEntity.ok(data);
     }

@@ -25,6 +25,8 @@ public class User {
     private String nickName;
     @Column(name = "address")
     private String address;
+    @Column(name = "address2")
+    private String address2;
     @Column(name = "salt")
     private String salt;
     @Column(name = "gender")
@@ -37,12 +39,13 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String userName, String password, String nickName, String address, String salt, int gender, int age, String email) {
+    public User(Long id, String userName, String password, String nickName, String address, String address2, String salt, int gender, int age, String email) {
         this.id = id;
         this.userName = userName;
         this.password = password;
         this.nickName = nickName;
         this.address = address;
+        this.address2 = address2;
         this.salt = salt;
         this.gender = gender;
         this.age = age;
@@ -89,6 +92,14 @@ public class User {
         this.address = address;
     }
 
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+
     public String getSalt() {
         return salt;
     }
@@ -123,6 +134,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", userName='" + userName + '\'' + ", password='" + password + '\'' + ", nickName='" + nickName + '\'' + ", address='" + address + '\'' + ", salt='" + salt + '\'' + ", gender=" + gender + ", age=" + age + ", email='" + email + '\'' + '}';
+        return "User{" + "id=" + id + ", userName='" + userName + '\'' + ", password='" + password + '\'' + ", nickName='" + nickName + '\'' + ", address='" + address + '\'' + ", address2='" + address2 + '\'' + ", salt='" + salt + '\'' + ", gender=" + gender + ", age=" + age + ", email='" + email + '\'' + '}';
     }
 }
