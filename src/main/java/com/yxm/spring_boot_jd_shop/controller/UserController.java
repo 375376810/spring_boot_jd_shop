@@ -29,9 +29,8 @@ public class UserController {
 
     /**
      * 保存用户(注册)
-     *
-     * @param userJson
-     * @return
+     * @param userJson 用户数据
+     * @return 返回响应码
      */
     @RequestMapping(value = "/save_user", produces = "application/json;charset=utf-8", method = RequestMethod.POST)
     @ResponseBody
@@ -47,7 +46,7 @@ public class UserController {
             userRepository.save(user);
             data = JsonUtil.success();
         } catch (Exception e) {
-            data = JsonUtil.error("用户数据有错误,无法保存 : " + e.toString());
+            data = JsonUtil.error("用户数据有错误,无法保存 : " + e);
             e.printStackTrace();
         }
         return ResponseEntity.ok(data);
@@ -120,7 +119,6 @@ public class UserController {
         //签名
         String responseSign = SignatureUtil.getSignature(tempJson);
         //对比请求端和服务器端的签名是否一致
-        ObjectMapper mapper = new ObjectMapper();
         LinkedHashMap<String, Object> data;
         if (requestSign.equals(responseSign)) {
             //更新user表
