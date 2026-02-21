@@ -16,9 +16,17 @@ spring:
       ddl-auto: update
       naming:
         implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
-  redis:
-    host: 127.0.0.1
-    port: 6379
+#  web:
+#    cors:
+#        allowed-origins: "http://192.168.123.29:80" # 仅允许这个前端地址跨域
+#        allowed-methods: "GET,POST,OPTIONS"
+#        allowed-headers: "*"
+#        allow-credentials: true
+#        max-age: 3600
+
+#  redis:
+#    host: 127.0.0.1
+#    port: 6379
 #logging:
 #  level:
 #     com.yxm.spring_boot_jd_shop : debug
